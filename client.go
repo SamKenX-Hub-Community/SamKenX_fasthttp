@@ -385,7 +385,11 @@ func (c *Client) Do(req *Request, resp *Response) error {
 		}
 
 		statusCode := resp.Header.StatusCode()
-		if statusCode != StatusMovedPermanently && statusCode != StatusFound && statusCode != StatusSeeOther {
+		if statusCode != StatusMovedPermanently &&
+			statusCode != StatusFound &&
+			statusCode != StatusSeeOther &&
+			statusCode != StatusTemporaryRedirect &&
+			statusCode != StatusPermanentRedirect {
 			break
 		}
 
